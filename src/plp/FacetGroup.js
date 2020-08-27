@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import ExpandableSection from '../ExpandableSection'
 import CheckboxFilterGroup from './CheckboxFilterGroup'
 import ButtonFilterGroup from './ButtonFilterGroup'
+import RangeFilterGroup from './RangeFilterGroup'
+import MinMaxFilterGroup from './MinMaxFilterGroup'
 
 const styles = theme => ({
   /**
@@ -28,7 +30,7 @@ export default function FacetGroup(props) {
   const {
     pageData: { filters },
   } = useContext(SearchResultsContext)
-
+  
   return useMemo(() => {
     if (!filters) return null
 
@@ -41,9 +43,13 @@ export default function FacetGroup(props) {
     }
 
     let Controls
-
+    
     if (group.ui === 'buttons') {
       Controls = ButtonFilterGroup
+    } else if(group.ui === 'range') {
+      Controls = RangeFilterGroup
+    } else if(group.ui === 'minMax') {
+      Controls = MinMaxFilterGroup
     } else {
       Controls = CheckboxFilterGroup
     }

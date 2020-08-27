@@ -10,34 +10,28 @@ export default function createProduct(id, numColors = 4) {
   return {
     id,
     url: `/p/${id}`,
-    name: `Product ${id}`,
+    name: `Creamed Corn 410g ${id}`,
     price,
-    priceText: `$${price}`,
+    priceText: `$${price} /Lb.`,
     rating: (10 - (id % 10)) / 2.0,
     thumbnail: {
-      src: `https://via.placeholder.com/400x400/${colors[color].background}/${
+      src: `https://via.placeholder.com/400x200/d6d6d6/8a8a8a/${
         colors[color].foreground
       }?text=${encodeURIComponent('Product ' + id)}`,
       alt: `Product ${id}`,
     },
     media: {
       full: variants.map((key, i) => ({
-        src: `https://via.placeholder.com/${i === 2 ? 400 : 600}x${i === 1 ? 400 : 600}/${
-          colors[key].background
-        }/${colors[key].foreground}?text=${encodeURIComponent('Product ' + id)}`,
+        src: `https://via.placeholder.com/${i === 2 ? 400 : 600}x${i === 1 ? 400 : 600}/d6d6d6/8a8a8a?text=${encodeURIComponent('Product ' + id)}`,
         alt: `Product ${id}`,
         magnify: {
           height: i === 1 ? 800 : 1200,
           width: i === 2 ? 800 : 1200,
-          src: `https://via.placeholder.com/${i === 2 ? 800 : 1200}x${i === 1 ? 800 : 1200}/${
-            colors[key].background
-          }/${colors[key].foreground}?text=${encodeURIComponent('Product ' + id)}`,
+          src: `https://via.placeholder.com/${i === 2 ? 800 : 1200}x${i === 1 ? 800 : 1200}/d6d6d6/8a8a8a?text=${encodeURIComponent('Product ' + id)}`,
         },
       })),
       thumbnails: variants.map((key, i) => ({
-        src: `https://via.placeholder.com/${i === 2 ? 233 : 300}x${i === 1 ? 233 : 300}/${
-          colors[key].background
-        }/${colors[key].foreground}?text=${encodeURIComponent('Product ' + id)}`,
+        src: `https://via.placeholder.com/${i === 2 ? 233 : 300}x${i === 1 ? 233 : 300}/d6d6d6/d6d6d6?text=${encodeURIComponent('Product ' + id)}`,
         alt: `Product ${id}`,
       })),
     },

@@ -22,7 +22,9 @@ export const styles = theme => ({
   /**
    * Styles applied to the image element.
    */
-  image: {},
+  image: {
+    borderRadius: '4px'
+  },
   /**
    * Styles applied to the image element when [`aspectRatio`](#prop-aspectRatio) is defined.
    */

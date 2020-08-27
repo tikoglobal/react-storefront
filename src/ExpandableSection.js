@@ -130,6 +130,7 @@ export const styles = theme => ({
   expandIcon: {
     height: 24,
     width: 24,
+    color: "black"
   },
   /**
    * Styles applied to the collapse icon element.
@@ -137,6 +138,7 @@ export const styles = theme => ({
   collapseIcon: {
     height: 24,
     width: 24,
+    color: "black"
   },
 })
 

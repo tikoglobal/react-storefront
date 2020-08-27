@@ -53,9 +53,9 @@ ResponsiveTiles.defaultProps = {
   cols: {
     xs: 2,
     sm: 3,
-    md: 4,
-    lg: 5,
-    xl: 5,
+    md: 3,
+    lg: 3,
+    xl: 3,
   },
   spacing: 1,
 }
