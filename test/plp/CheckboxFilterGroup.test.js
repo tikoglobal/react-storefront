@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchResultsContext from 'react-storefront/plp/SearchResultsContext'
-import CheckboxFilterGroup from 'react-storefront/plp/CheckboxFilterGroup'
+import SearchResultsContext from '@tikoglobal/react-storefront/plp/SearchResultsContext'
+import CheckboxFilterGroup from '@tikoglobal/react-storefront/plp/CheckboxFilterGroup'
 import { Checkbox, FormControlLabel } from '@material-ui/core'
 
 describe('CheckboxFilterGroup', () => {

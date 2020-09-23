@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { mount } from 'enzyme'
-import ToolbarButton from 'react-storefront/ToolbarButton'
+import ToolbarButton from '@tikoglobal/react-storefront/ToolbarButton'
 import { IconButton } from '@material-ui/core'
 
 describe('ToolbarButton', () => {

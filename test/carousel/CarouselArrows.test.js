@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { ChevronLeft, ChevronRight } from '@material-ui/icons'
-import CarouselArrows from 'react-storefront/carousel/CarouselArrows'
+import CarouselArrows from '@tikoglobal/react-storefront/carousel/CarouselArrows'
 
 describe('CarouselArrows', () => {
   let wrapper

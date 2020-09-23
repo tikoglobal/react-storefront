@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useContext, useState } from 'react'
-import { Checkbox, FormGroup, Link, FormControlLabel } from '@material-ui/core'
+import { FormGroup, Typography, Slider } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import SearchResultsContext from './SearchResultsContext'
-import take from 'lodash/take'
 
 const styles = theme => ({
   /**
@@ -20,10 +19,6 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
   },
-
-  loadMoreLink: {
-    paddingLeft: '30px',
-  },
 })
 
 const useStyles = makeStyles(styles, { name: 'RSFCheckboxFilterGroup' })
@@ -32,24 +27,53 @@ const useStyles = makeStyles(styles, { name: 'RSFCheckboxFilterGroup' })
  * A UI for grouping filters using checkboxes.
  */
 export default function CheckboxFilterGroup(props) {
-  const [showMore, setShowMore] = useState(false)
+  console.log(props)
+  const [value, setValue] = useState([0, 100])
   const { group, submitOnChange } = props
   const {
     pageData: { filters },
-    actions: { toggleFilter },
+    actions: { toggleFilter, updateFilter  },
   } = useContext(SearchResultsContext)
 
   const classes = useStyles(props.classes)
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    
+    updateFilters(
+      [
+        { code: `discount_min:${value[0]}` },
+        { code: `discount_max:${value[1]}` }
+      ], 
+      submitOnChange
+    )
+  };
+
   return useMemo(
     () => (
       <FormGroup>
-        {take(group.options, 5).map((facet, i) => (
+        <Slider
+          marks={[{
+            value: 0,
+            label: '$0'
+          },{
+            value: 100,
+            label: '$100'
+          }]}
+          value={value}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+        />
+        {/* {group.options.map((facet, i) => (
           <FormControlLabel
             key={i}
             label={
               <div className={classes.groupLabel}>
                 <span>{facet.name}</span>
+                <Typography variant="caption" className={classes.matches} component="span">
+                  ({facet.matches})
+                </Typography>
               </div>
             }
             control={
@@ -60,49 +84,10 @@ export default function CheckboxFilterGroup(props) {
               />
             }
           />
-        ))}
-        {group.options.length > 5 &&
-          showMore === true &&
-          group.options.slice(5).map((facet, i) => (
-            <FormControlLabel
-              key={i}
-              label={
-                <div className={classes.groupLabel}>
-                  <span>{facet.name}</span>
-                </div>
-              }
-              control={
-                <Checkbox
-                  checked={filters.indexOf(facet.code) !== -1}
-                  color="primary"
-                  onChange={() => toggleFilter(facet, submitOnChange)}
-                />
-              }
-            />
-          ))}
-        {group.options.length > 5 && showMore === false ? (
-          <Link
-            href="#"
-            onClick={() => setShowMore(true)}
-            className={classes.loadMoreLink}
-            variant="caption"
-          >
-            See all...
-          </Link>
-        ) : null}
-        {group.options.length > 5 && showMore === true ? (
-          <Link
-            href="#"
-            onClick={() => setShowMore(false)}
-            className={classes.loadMoreLink}
-            variant="caption"
-          >
-            See less...
-          </Link>
-        ) : null}
+        ))} */}
       </FormGroup>
     ),
-    [...Object.values(props), filters, showMore],
+    [...Object.values(props), filters],
   )
 }
 

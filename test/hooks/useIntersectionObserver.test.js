@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import useIntersectionObserver from 'react-storefront/hooks/useIntersectionObserver'
+import useIntersectionObserver from '@tikoglobal/react-storefront/hooks/useIntersectionObserver'
 import { mount } from 'enzyme'
 
 describe('useIntersectionObserver', () => {

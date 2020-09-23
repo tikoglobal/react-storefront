@@ -1,4 +1,4 @@
-import fulfillAPIRequest from 'react-storefront/props/fulfillAPIRequest'
+import fulfillAPIRequest from '@tikoglobal/react-storefront/props/fulfillAPIRequest'
 
 describe('fulfillAPIRequest', () => {
   it('should fetch appData if includeAppData is present', async () => {

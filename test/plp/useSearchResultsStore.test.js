@@ -1,5 +1,5 @@
-import * as useLazyState from 'react-storefront/hooks/useLazyState'
-import useSearchResultsStore from 'react-storefront/plp/useSearchResultsStore'
+import * as useLazyState from '@tikoglobal/react-storefront/hooks/useLazyState'
+import useSearchResultsStore from '@tikoglobal/react-storefront/plp/useSearchResultsStore'
 
 describe('useSearchResultsStore', () => {
   it('should call useLazyState with right params and return useLazyState result', () => {

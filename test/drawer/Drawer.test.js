@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Drawer from 'react-storefront/drawer/Drawer'
-import DrawerCloseButton from 'react-storefront/drawer/DrawerCloseButton'
+import Drawer from '@tikoglobal/react-storefront/drawer/Drawer'
+import DrawerCloseButton from '@tikoglobal/react-storefront/drawer/DrawerCloseButton'
 import { Typography } from '@material-ui/core'
 
 describe('Drawer', () => {

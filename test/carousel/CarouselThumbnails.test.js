@@ -1,7 +1,7 @@
 import * as useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery'
 import React from 'react'
 import { mount } from 'enzyme'
-import CarouselThumbnails from 'react-storefront/carousel/CarouselThumbnails'
+import CarouselThumbnails from '@tikoglobal/react-storefront/carousel/CarouselThumbnails'
 import { Tab, Tabs } from '@material-ui/core'
 
 describe('CarouselThumbnails', () => {

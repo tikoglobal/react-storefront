@@ -1,4 +1,4 @@
-import isBrowser from 'react-storefront/utils/isBrowser'
+import isBrowser from '@tikoglobal/react-storefront/utils/isBrowser'
 
 describe('isBrowser', () => {
   it('should return true if window is defined', () => {

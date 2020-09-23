@@ -7,7 +7,7 @@ describe('useTraceUpdate', () => {
   describe('development', () => {
     beforeAll(() => {
       jest.isolateModules(() => {
-        useTraceUpdate = require('react-storefront/hooks/useTraceUpdate').default
+        useTraceUpdate = require('@tikoglobal/react-storefront/hooks/useTraceUpdate').default
       })
     })
 
@@ -36,7 +36,7 @@ describe('useTraceUpdate', () => {
       process.env.NODE_ENV = 'production'
 
       jest.isolateModules(() => {
-        useTraceUpdate = require('react-storefront/hooks/useTraceUpdate').default
+        useTraceUpdate = require('@tikoglobal/react-storefront/hooks/useTraceUpdate').default
       })
     })
 

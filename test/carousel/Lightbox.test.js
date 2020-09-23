@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Lightbox from 'react-storefront/carousel/Lightbox'
+import Lightbox from '@tikoglobal/react-storefront/carousel/Lightbox'
 
 describe('Lightbox', () => {
   let wrapper

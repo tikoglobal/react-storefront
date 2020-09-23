@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import ActionButton from 'react-storefront/ActionButton'
+import ActionButton from '@tikoglobal/react-storefront/ActionButton'
 import { Button, Typography } from '@material-ui/core'
 
 describe('ActionButton', () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SEOLinks from 'react-storefront/menu/SEOLinks'
+import SEOLinks from '@tikoglobal/react-storefront/menu/SEOLinks'
 
 describe('SEOLinks', () => {
   let wrapper

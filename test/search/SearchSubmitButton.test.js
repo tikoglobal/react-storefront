@@ -1,7 +1,7 @@
 import { Apps } from '@material-ui/icons'
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchSubmitButton from 'react-storefront/search/SearchSubmitButton'
+import SearchSubmitButton from '@tikoglobal/react-storefront/search/SearchSubmitButton'
 import { Button } from '@material-ui/core'
 
 describe('SearchSubmitButton', () => {

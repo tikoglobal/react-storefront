@@ -5,7 +5,7 @@
  * Example usage:
  *
  * ```js
- * import { fetchLatest, StaleResponseError } from 'react-storefront/fetchLatest'
+ * import { fetchLatest, StaleResponseError } from '@tikoglobal/react-storefront/fetchLatest'
  * import originalFetch from 'fetch'
  *
  * const fetch = fetchLatest(originalFetch)

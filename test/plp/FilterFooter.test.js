@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import FilterFooter from 'react-storefront/plp/FilterFooter'
-import SearchResultsContext from 'react-storefront/plp/SearchResultsContext'
+import FilterFooter from '@tikoglobal/react-storefront/plp/FilterFooter'
+import SearchResultsContext from '@tikoglobal/react-storefront/plp/SearchResultsContext'
 import { Typography } from '@material-ui/core'
 
 describe('FilterFooter', () => {

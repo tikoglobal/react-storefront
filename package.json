@@ -1,14 +1,13 @@
 {
-  "name": "react-storefront",
-  "version": "8.16.2",
+  "name": "@tikoglobal/react-storefront",
+  "version": "8.16.7",
   "description": "Build and deploy e-commerce progressive web apps (PWAs) in record time.",
   "module": "./index.js",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=8.10.0"
   },
-  "repository": "https://github.com/storefront-foundation/react-storefront",
-  "bugs": "https://github.com/storefront-foundation/react-storefront/issues",
+  "repository": "https://github.com/tikoglobal/react-storefront",
   "directories": {
     "test": "test"
   },
@@ -45,6 +44,7 @@
     "formidable": "^1.2.1",
     "glob": "^7.1.6",
     "isomorphic-unfetch": "^3.0.0",
+    "lodash": "^4.17.20",
     "next-offline": "^5.0.0",
     "qs": "^6.9.0",
     "react-image-magnify": "^2.7.4",

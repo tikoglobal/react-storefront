@@ -166,7 +166,7 @@ const main = async () => {
       responseObject.styles = await getStyles(responseObject)
       responseObject.props = getProps(responseObject)
       responseObject.type = 'component'
-      responseObject.import = `import ${responseObject.filename} from 'react-storefront/${fullPath}'`
+      responseObject.import = `import ${responseObject.filename} from '@tikoglobal/react-storefront/${fullPath}'`
 
       delete responseObject.id
       delete responseObject.filepath

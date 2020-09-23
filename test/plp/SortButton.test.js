@@ -1,13 +1,13 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { windowLocationMock } from '../mocks/mockHelper'
-import SearchResultsContext from 'react-storefront/plp/SearchResultsContext'
-import Drawer from 'react-storefront/drawer/Drawer'
+import SearchResultsContext from '@tikoglobal/react-storefront/plp/SearchResultsContext'
+import Drawer from '@tikoglobal/react-storefront/drawer/Drawer'
 import { Menu } from '@material-ui/core'
 import * as useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery'
-import Sort from 'react-storefront/plp/Sort'
-import ActionButton from 'react-storefront/ActionButton'
-import SortButton from 'react-storefront/plp/SortButton'
+import Sort from '@tikoglobal/react-storefront/plp/Sort'
+import ActionButton from '@tikoglobal/react-storefront/ActionButton'
+import SortButton from '@tikoglobal/react-storefront/plp/SortButton'
 import { act } from 'react-dom/test-utils'
 
 describe('SortButton', () => {

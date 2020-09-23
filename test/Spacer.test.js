@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Spacer from 'react-storefront/Spacer'
+import Spacer from '@tikoglobal/react-storefront/Spacer'
 
 describe('Spacer', () => {
   let wrapper

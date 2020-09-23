@@ -1,4 +1,4 @@
-import createTheme from 'react-storefront/theme/createTheme'
+import createTheme from '@tikoglobal/react-storefront/theme/createTheme'
 
 describe('createTheme', () => {
   it('should return a material UI theme', () => {

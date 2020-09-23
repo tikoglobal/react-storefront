@@ -3,7 +3,7 @@ describe('getBase64ForImage', () => {
 
   beforeEach(() => {
     jest.isolateModules(() => {
-      jest.doMock('react-storefront/fetch', () => () => {
+      jest.doMock('@tikoglobal/react-storefront/fetch', () => () => {
         return Promise.resolve({
           headers: new Headers({
             'content-type': 'image/png',
@@ -11,7 +11,7 @@ describe('getBase64ForImage', () => {
           buffer: () => Promise.resolve(Buffer.from('test-image')),
         })
       })
-      getBase64ForImage = require('react-storefront/utils/getBase64ForImage').default
+      getBase64ForImage = require('@tikoglobal/react-storefront/utils/getBase64ForImage').default
     })
   })
 

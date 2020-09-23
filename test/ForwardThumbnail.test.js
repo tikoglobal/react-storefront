@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef } from 'react'
 import { mount } from 'enzyme'
-import PWAContext from 'react-storefront/PWAContext'
-import ForwardThumbnail from 'react-storefront/ForwardThumbnail'
+import PWAContext from '@tikoglobal/react-storefront/PWAContext'
+import ForwardThumbnail from '@tikoglobal/react-storefront/ForwardThumbnail'
 
 describe('ForwardThumbnail', () => {
   let wrapper, thumbnail

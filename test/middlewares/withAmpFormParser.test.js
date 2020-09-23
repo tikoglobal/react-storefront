@@ -1,4 +1,4 @@
-import withAmpFormParser from 'react-storefront/middlewares/withAmpFormParser'
+import withAmpFormParser from '@tikoglobal/react-storefront/middlewares/withAmpFormParser'
 import { IncomingForm } from 'formidable'
 
 describe('withAmpFormParser', () => {

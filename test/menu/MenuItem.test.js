@@ -1,9 +1,9 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import MenuItem from 'react-storefront/menu/MenuItem'
-import Link from 'react-storefront/link/Link'
-import MenuContext from 'react-storefront/menu/MenuContext'
-import MenuLeaf from 'react-storefront/menu/MenuLeaf'
+import MenuItem from '@tikoglobal/react-storefront/menu/MenuItem'
+import Link from '@tikoglobal/react-storefront/link/Link'
+import MenuContext from '@tikoglobal/react-storefront/menu/MenuContext'
+import MenuLeaf from '@tikoglobal/react-storefront/menu/MenuLeaf'
 
 describe('MenuItem', () => {
   let wrapper

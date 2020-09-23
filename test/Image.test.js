@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { mount } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import ReactVisibilitySensor from 'react-visibility-sensor'
-import PWAContext from 'react-storefront/PWAContext'
+import PWAContext from '@tikoglobal/react-storefront/PWAContext'
 
 describe('Image', () => {
   let wrapper,
@@ -42,7 +42,7 @@ describe('Image', () => {
         useAmp: () => false,
       }))
 
-      Image = require('react-storefront/Image').default
+      Image = require('@tikoglobal/react-storefront/Image').default
     })
   })
 

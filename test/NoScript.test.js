@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import NoScript from 'react-storefront/NoScript'
+import NoScript from '@tikoglobal/react-storefront/NoScript'
 
 describe('NoScript', () => {
   let wrapper

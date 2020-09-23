@@ -1,8 +1,8 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Media from 'react-storefront/carousel/Media'
+import Media from '@tikoglobal/react-storefront/carousel/Media'
 import ReactImageMagnify from 'react-image-magnify'
-import Image from 'react-storefront/Image'
+import Image from '@tikoglobal/react-storefront/Image'
 
 describe('Media', () => {
   let wrapper

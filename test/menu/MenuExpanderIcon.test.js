@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import MenuContext from 'react-storefront/menu/MenuContext'
+import MenuContext from '@tikoglobal/react-storefront/menu/MenuContext'
 import { ChevronRight, ExpandLess, ExpandMore } from '@material-ui/icons'
 
 describe('MenuExpanderIcon', () => {
@@ -12,7 +12,7 @@ describe('MenuExpanderIcon', () => {
         useAmp: () => mockAmp,
       }))
 
-      MenuExpanderIcon = require('react-storefront/menu/MenuExpanderIcon').default
+      MenuExpanderIcon = require('@tikoglobal/react-storefront/menu/MenuExpanderIcon').default
     })
   })
 

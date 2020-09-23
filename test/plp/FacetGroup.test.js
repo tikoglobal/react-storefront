@@ -1,10 +1,10 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchResultsContext from 'react-storefront/plp/SearchResultsContext'
-import FacetGroup from 'react-storefront/plp/FacetGroup'
-import CheckboxFilterGroup from 'react-storefront/plp/CheckboxFilterGroup'
-import ButtonFilterGroup from 'react-storefront/plp/ButtonFilterGroup'
-import ExpandableSection from 'react-storefront/ExpandableSection'
+import SearchResultsContext from '@tikoglobal/react-storefront/plp/SearchResultsContext'
+import FacetGroup from '@tikoglobal/react-storefront/plp/FacetGroup'
+import CheckboxFilterGroup from '@tikoglobal/react-storefront/plp/CheckboxFilterGroup'
+import ButtonFilterGroup from '@tikoglobal/react-storefront/plp/ButtonFilterGroup'
+import ExpandableSection from '@tikoglobal/react-storefront/ExpandableSection'
 
 describe('FacetGroup', () => {
   let wrapper

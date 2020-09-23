@@ -1,4 +1,4 @@
-import merge from 'react-storefront/utils/merge'
+import merge from '@tikoglobal/react-storefront/utils/merge'
 
 describe('merge', () => {
   it('should overwrite the target array with the source array', () => {

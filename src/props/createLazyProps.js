@@ -14,8 +14,8 @@
  * Example:
  *
  * ```js
- * import useLazyState from 'react-storefront/hooks/useLazyState'
- * import fetchFromAPI from 'react-storefront/props/fetchFromAPI'
+ * import useLazyState from '@tikoglobal/react-storefront/hooks/useLazyState'
+ * import fetchFromAPI from '@tikoglobal/react-storefront/props/fetchFromAPI'
  *
  * function Product(lazyProps) {
  *   const [state, updateState] = useLazyState(lazyProps)
@@ -50,9 +50,11 @@
  *  by `fetchCallback` to resolve
  */
 export default function createLazyProps(fetchCallback, { timeout = 100 } = {}) {
+  console.log('create lazy props')
   return (options /* from getInitialProps */) => {
     if (typeof window === 'undefined') {
       // server
+      console.log('window undefined')
       return fetchCallback(options)
     } else {
       // client

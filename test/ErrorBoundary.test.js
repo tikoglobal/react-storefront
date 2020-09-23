@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { eventListenersMock } from './mocks/mockHelper'
-import ErrorBoundary from 'react-storefront/ErrorBoundary'
+import ErrorBoundary from '@tikoglobal/react-storefront/ErrorBoundary'
 
 describe('ErrorBoundary', () => {
   const errorText = 'Test Error'

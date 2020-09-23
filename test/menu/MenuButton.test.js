@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import MenuButton from 'react-storefront/menu/MenuButton'
+import MenuButton from '@tikoglobal/react-storefront/menu/MenuButton'
 
 describe('Fill', () => {
   let wrapper

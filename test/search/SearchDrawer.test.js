@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchDrawer from 'react-storefront/search/SearchDrawer'
+import SearchDrawer from '@tikoglobal/react-storefront/search/SearchDrawer'
 import { navigate } from '../mocks/mockRouter'
 
 describe('SearchDrawer', () => {

@@ -12,7 +12,7 @@ import { CacheableResponsePlugin } from 'workbox-cacheable-response'
  * **Example**
  *
  * ```js
- *  import { configureServiceWorker } from 'react-storefront/sw'
+ *  import { configureServiceWorker } from '@tikoglobal/react-storefront/sw'
  *
  *  const maxAgeSeconds = 60 * 60 // 1 hour
  *

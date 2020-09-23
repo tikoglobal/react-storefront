@@ -13,8 +13,8 @@ describe('LazyHydrate', () => {
   describe('on the server', () => {
     beforeEach(() => {
       jest.isolateModules(() => {
-        isBrowser = jest.doMock('react-storefront/utils/isBrowser', () => () => false)
-        const mod = require('react-storefront/LazyHydrate')
+        isBrowser = jest.doMock('@tikoglobal/react-storefront/utils/isBrowser', () => () => false)
+        const mod = require('@tikoglobal/react-storefront/LazyHydrate')
         LazyHydrate = mod.default
         LazyStyles = mod.LazyStyles
         getRegistryCount = mod.getRegistryCount
@@ -70,7 +70,7 @@ describe('LazyHydrate', () => {
     beforeEach(() => {
       jest.isolateModules(() => {
         events = {}
-        isBrowser = jest.doMock('react-storefront/utils/isBrowser', () => () => true)
+        isBrowser = jest.doMock('@tikoglobal/react-storefront/utils/isBrowser', () => () => true)
         Router = jest.doMock('next/router', () => ({
           events: {
             on: (name, callback) => {
@@ -78,13 +78,13 @@ describe('LazyHydrate', () => {
             },
           },
         }))
-        jest.doMock('react-storefront/hooks/useIntersectionObserver', () => {
+        jest.doMock('@tikoglobal/react-storefront/hooks/useIntersectionObserver', () => {
           return (_el, callback, fallback) => {
             intersectionObserverCallback = callback
             intersectionObserverFallback = fallback
           }
         })
-        const mod = require('react-storefront/LazyHydrate')
+        const mod = require('@tikoglobal/react-storefront/LazyHydrate')
         LazyHydrate = mod.default
         LazyStyles = mod.LazyStyles
         getRegistryCount = mod.getRegistryCount

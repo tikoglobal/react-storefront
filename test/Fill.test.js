@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Fill from 'react-storefront/Fill'
+import Fill from '@tikoglobal/react-storefront/Fill'
 
 describe('Fill', () => {
   let wrapper

@@ -1,4 +1,4 @@
-import getRoutes from 'react-storefront/server/getRoutes'
+import getRoutes from '@tikoglobal/react-storefront/server/getRoutes'
 
 describe('getRoutes', () => {
   const manifest = {

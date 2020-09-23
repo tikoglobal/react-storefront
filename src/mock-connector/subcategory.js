@@ -2,7 +2,7 @@ import createFacets from './utils/createFacets'
 import createSortOptions from './utils/createSortOptions'
 import createProduct from './utils/createProduct'
 import colors, { indexForColor } from './utils/colors'
-import fulfillAPIRequest from 'react-storefront/props/fulfillAPIRequest'
+import fulfillAPIRequest from '@tikoglobal/react-storefront/props/fulfillAPIRequest'
 import createAppData from './utils/createAppData'
 
 export default async function subcategory(params, req, res) {

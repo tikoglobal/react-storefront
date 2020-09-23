@@ -1,4 +1,4 @@
-import createLazyProps from 'react-storefront/props/createLazyProps'
+import createLazyProps from '@tikoglobal/react-storefront/props/createLazyProps'
 
 describe('createLazyProps', () => {
   describe('server', () => {

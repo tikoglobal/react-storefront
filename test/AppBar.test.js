@@ -1,9 +1,9 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import AppBar from 'react-storefront/AppBar'
-import PWAContext from 'react-storefront/PWAContext'
+import AppBar from '@tikoglobal/react-storefront/AppBar'
+import PWAContext from '@tikoglobal/react-storefront/PWAContext'
 import { MuiThemeProvider } from '@material-ui/core/styles'
-import createTheme from 'react-storefront/theme/createTheme'
+import createTheme from '@tikoglobal/react-storefront/theme/createTheme'
 import { Slide } from '@material-ui/core'
 
 // Create a theme instance.

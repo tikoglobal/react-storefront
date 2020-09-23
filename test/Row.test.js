@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Row from 'react-storefront/Row'
+import Row from '@tikoglobal/react-storefront/Row'
 
 describe('Row', () => {
   let wrapper

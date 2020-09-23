@@ -10,7 +10,7 @@ const withServiceWorker = require('./withServiceWorker')
  */
 module.exports = ({
   prefetchQueryParam,
-  connector = 'react-storefront/mock-connector',
+  connector = '@tikoglobal/react-storefront/mock-connector',
   ...nextConfig
 } = {}) => {
   const usePreact = process.env.preact === 'true'

@@ -5,9 +5,9 @@ import Carousel, {
   AutoPlaySwipeableViews,
   VirtualizeSwipeableViews,
   AutoPlayVirtualizeSwipeableViews,
-} from 'react-storefront/carousel/Carousel'
-import CarouselDots from 'react-storefront/carousel/CarouselDots'
-import CarouselArrows from 'react-storefront/carousel/CarouselArrows'
+} from '@tikoglobal/react-storefront/carousel/Carousel'
+import CarouselDots from '@tikoglobal/react-storefront/carousel/CarouselDots'
+import CarouselArrows from '@tikoglobal/react-storefront/carousel/CarouselArrows'
 
 describe('Carousel', () => {
   let wrapper

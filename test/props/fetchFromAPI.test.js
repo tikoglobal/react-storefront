@@ -1,4 +1,4 @@
-import fetchFromAPI from 'react-storefront/props/fetchFromAPI'
+import fetchFromAPI from '@tikoglobal/react-storefront/props/fetchFromAPI'
 
 describe('fetchFromAPI', () => {
   let headers

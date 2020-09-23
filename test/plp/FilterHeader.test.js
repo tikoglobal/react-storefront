@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import FilterHeader from 'react-storefront/plp/FilterHeader'
-import SearchResultsContext from 'react-storefront/plp/SearchResultsContext'
+import FilterHeader from '@tikoglobal/react-storefront/plp/FilterHeader'
+import SearchResultsContext from '@tikoglobal/react-storefront/plp/SearchResultsContext'
 
 describe('FilterHeader', () => {
   let wrapper

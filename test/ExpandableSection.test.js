@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { mount } from 'enzyme'
-import ExpandableSection from 'react-storefront/ExpandableSection'
+import ExpandableSection from '@tikoglobal/react-storefront/ExpandableSection'
 import { ExpansionPanel, ExpansionPanelSummary, Typography } from '@material-ui/core'
 import { ArrowBack as TestIcon, ExpandMore as ExpandMoreIcon } from '@material-ui/icons'
 

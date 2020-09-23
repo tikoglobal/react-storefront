@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchForm from 'react-storefront/search/SearchForm'
+import SearchForm from '@tikoglobal/react-storefront/search/SearchForm'
 import { act } from 'react-dom/test-utils'
 import Router from '../mocks/mockRouter'
 

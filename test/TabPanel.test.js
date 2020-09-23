@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { mount } from 'enzyme'
-import TabPanel from 'react-storefront/TabPanel'
+import TabPanel from '@tikoglobal/react-storefront/TabPanel'
 import { Tab } from '@material-ui/core'
 
 describe('TabPanel', () => {

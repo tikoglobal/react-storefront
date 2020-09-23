@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchButton from 'react-storefront/search/SearchButton'
+import SearchButton from '@tikoglobal/react-storefront/search/SearchButton'
 import { Search } from '@material-ui/icons'
 import { IconButton } from '@material-ui/core'
 

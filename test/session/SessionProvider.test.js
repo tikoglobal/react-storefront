@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { mount } from 'enzyme'
-import SessionContext from 'react-storefront/session/SessionContext'
+import SessionContext from '@tikoglobal/react-storefront/session/SessionContext'
 import { act } from 'react-dom/test-utils'
 
 describe('SessionProvider', () => {
@@ -13,7 +13,7 @@ describe('SessionProvider', () => {
   beforeEach(() => {
     session = {}
     fetchMock.mockOnce(JSON.stringify(sessionResponse))
-    SessionProvider = require('react-storefront/session/SessionProvider').default
+    SessionProvider = require('@tikoglobal/react-storefront/session/SessionProvider').default
   })
 
   afterEach(() => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import MenuContext from 'react-storefront/menu/MenuContext'
+import MenuContext from '@tikoglobal/react-storefront/menu/MenuContext'
 
 describe('MenuIcon', () => {
   let wrapper, MenuIcon, mockAmp
@@ -11,7 +11,7 @@ describe('MenuIcon', () => {
         useAmp: () => mockAmp,
       }))
 
-      MenuIcon = require('react-storefront/menu/MenuIcon').default
+      MenuIcon = require('@tikoglobal/react-storefront/menu/MenuIcon').default
     })
   })
 

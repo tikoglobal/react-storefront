@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import MagnifyHint from 'react-storefront/carousel/MagnifyHint'
+import MagnifyHint from '@tikoglobal/react-storefront/carousel/MagnifyHint'
 import { Typography } from '@material-ui/core'
 
 describe('MagnifyHint', () => {

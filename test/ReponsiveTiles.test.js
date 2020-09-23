@@ -2,8 +2,8 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { GridListTile } from '@material-ui/core'
-import ResponsiveTiles from 'react-storefront/ResponsiveTiles'
-import AutoScrollToNewChildren from 'react-storefront/AutoScrollToNewChildren'
+import ResponsiveTiles from '@tikoglobal/react-storefront/ResponsiveTiles'
+import AutoScrollToNewChildren from '@tikoglobal/react-storefront/AutoScrollToNewChildren'
 import * as makeStyles from '@material-ui/core/styles/makeStyles'
 
 describe('ResponsiveTiles', () => {

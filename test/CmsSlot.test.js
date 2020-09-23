@@ -17,7 +17,7 @@ describe('CmsSlot', () => {
 
   beforeAll(() => {
     jest.isolateModules(() => {
-      jest.doMock('react-storefront/utils/lazyLoadImages', () =>
+      jest.doMock('@tikoglobal/react-storefront/utils/lazyLoadImages', () =>
         jest.fn(x => {
           if (error) {
             throw new Error('test')
@@ -27,11 +27,11 @@ describe('CmsSlot', () => {
         }),
       )
 
-      jest.doMock('react-storefront/serviceWorker', () => ({
+      jest.doMock('@tikoglobal/react-storefront/serviceWorker', () => ({
         prefetchJsonFor: () => (prefetch = true),
       }))
 
-      CmsSlot = require('react-storefront/CmsSlot').default
+      CmsSlot = require('@tikoglobal/react-storefront/CmsSlot').default
     })
   })
 

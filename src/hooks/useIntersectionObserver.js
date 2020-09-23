@@ -14,7 +14,7 @@ function getElement(ref) {
  *
  * ```js
  *  import React, { useRef, useCallback } from 'react'
- *  import useIntersectionObserver from 'react-storefront/hooks/useIntersectionObserver'
+ *  import useIntersectionObserver from '@tikoglobal/react-storefront/hooks/useIntersectionObserver'
  *
  *  function MyComponent() {
  *    const ref = useRef(null)

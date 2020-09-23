@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Label from 'react-storefront/Label'
+import Label from '@tikoglobal/react-storefront/Label'
 import { Typography } from '@material-ui/core'
 
 describe('Label', () => {
