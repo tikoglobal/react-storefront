@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useContext, useState } from 'react'
-import { Checkbox, FormGroup, Link, FormControlLabel } from '@material-ui/core'
+import { FormGroup, TextField, IconButton, Box } from '@material-ui/core'
+import { ArrowForwardIos } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
 import SearchResultsContext from './SearchResultsContext'
 
@@ -20,8 +21,8 @@ const styles = theme => ({
     alignItems: 'center',
   },
 
-  loadMoreLink: {
-    paddingLeft: '30px',
+  field: {
+    marginRight: '6px',
   },
 })
 
@@ -31,18 +32,50 @@ const useStyles = makeStyles(styles, { name: 'RSFCheckboxFilterGroup' })
  * A UI for grouping filters using checkboxes.
  */
 export default function CheckboxFilterGroup(props) {
-  const [showMore, setShowMore] = useState(false)
   const { group, submitOnChange } = props
   const {
-    pageData: { filters },
-    actions: { toggleFilter },
+    pageData: { by_price_per_net_content },
+    actions: { setByPricePerNetContentFilter },
   } = useContext(SearchResultsContext)
+
+  const initialMin = by_price_per_net_content ? by_price_per_net_content.min : undefined
+  const initialMax = by_price_per_net_content ? by_price_per_net_content.max : undefined
+
+  const [min, setMin] = useState(initialMin)
+  const [max, setMax] = useState(initialMax)
 
   const classes = useStyles(props.classes)
 
-  return useMemo(() => <div>custom filter</div>, [...Object.values(props), filters, showMore])
+  return (
+    <FormGroup>
+      <Box display="flex">
+        <TextField
+          value={min}
+          variant="filled"
+          label="$ Min"
+          onChange={event => setMin(event.target.value)}
+          className={classes.field}
+          margin="dense"
+        />
+        <TextField
+          value={max}
+          variant="filled"
+          label="$ Max"
+          onChange={event => setMax(event.target.value)}
+          className={classes.field}
+          margin="dense"
+        />
+        <IconButton
+          aria-label="Apply"
+          onClick={() => setByPricePerNetContentFilter(min, max, true)}
+        >
+          <ArrowForwardIos />
+        </IconButton>
+      </Box>
+    </FormGroup>
+  )
 }
-
+//<button onClick={() => setByPricePerNetContentFilter(9, 31, true)}>Set Filter</button>
 CheckboxFilterGroup.propTypes = {
   /**
    * Override or extend the styles applied to the component. See [CSS API](#css) below for more details.

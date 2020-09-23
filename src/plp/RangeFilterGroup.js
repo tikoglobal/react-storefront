@@ -1,93 +1,61 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useContext, useState } from 'react'
-import { FormGroup, Typography, Slider } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Slider } from '@material-ui/core'
 import SearchResultsContext from './SearchResultsContext'
+import debounce from 'lodash/debounce'
 
-const styles = theme => ({
-  /**
-   * Styles applied to the matching text.
-   */
-  matches: {
-    marginLeft: '5px',
-    display: 'inline',
-  },
-  /**
-   * Styles applied to the group label element.
-   */
-  groupLabel: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-})
-
-const useStyles = makeStyles(styles, { name: 'RSFCheckboxFilterGroup' })
+const debouncedSetByDiscountFilter = debounce((callback, min, max) => {
+  callback(min, max, true)
+}, 700)
 
 /**
  * A UI for grouping filters using checkboxes.
  */
 export default function CheckboxFilterGroup(props) {
-  console.log(props)
-  const [value, setValue] = useState([0, 100])
   const { group, submitOnChange } = props
   const {
-    pageData: { filters },
-    actions: { toggleFilter, updateFilter  },
+    pageData: { by_discount },
+    actions: { setByDiscountFilter },
   } = useContext(SearchResultsContext)
 
-  const classes = useStyles(props.classes)
+  console.log('render range')
+  console.log(by_discount)
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    
-    updateFilters(
-      [
-        { code: `discount_min:${value[0]}` },
-        { code: `discount_max:${value[1]}` }
-      ], 
-      submitOnChange
-    )
-  };
+  let value = [0, 100]
+  if (by_discount) {
+    value = [by_discount.min, by_discount.max]
+  }
+  const [range, setRange] = useState(value)
 
-  return useMemo(
-    () => (
-      <FormGroup>
-        <Slider
-          marks={[{
-            value: 0,
-            label: '$0'
-          },{
-            value: 100,
-            label: '$100'
-          }]}
-          value={value}
-          onChange={handleChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
-        />
-        {/* {group.options.map((facet, i) => (
-          <FormControlLabel
-            key={i}
-            label={
-              <div className={classes.groupLabel}>
-                <span>{facet.name}</span>
-                <Typography variant="caption" className={classes.matches} component="span">
-                  ({facet.matches})
-                </Typography>
-              </div>
-            }
-            control={
-              <Checkbox
-                checked={filters.indexOf(facet.code) !== -1}
-                color="primary"
-                onChange={() => toggleFilter(facet, submitOnChange)}
-              />
-            }
-          />
-        ))} */}
-      </FormGroup>
-    ),
-    [...Object.values(props), filters],
+  const updateRange = range => {
+    setRange(range)
+    debouncedSetByDiscountFilter(setByDiscountFilter, range[0], range[1])
+  }
+
+  if (value[0] !== range[0] || value[1] !== range[1]) {
+    setRange([value[0], value[1]])
+  }
+
+  return (
+    <Slider
+      value={range}
+      min={0}
+      max={100}
+      step={10}
+      marks={[
+        {
+          value: 0,
+          label: '0%',
+        },
+        {
+          value: 100,
+          label: '100%',
+        },
+      ]}
+      onChange={(_event, value) => updateRange(value)}
+      valueLabelDisplay="auto"
+      aria-labelledby="range-slider"
+    />
   )
 }
 

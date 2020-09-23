@@ -27,6 +27,7 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
   useEffect(() => {
     if (store.reloading) {
       async function refresh() {
+        console.log('refresh here')
         const query = getQueryForState()
         const url = getURLForState(query)
 
@@ -38,7 +39,22 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
         if (query.filters) {
           filters = JSON.parse(query.filters)
         }
-        const res = await plpService(filters, query.sort, query.page, ITEMS_PER_PAGE)
+
+        console.log(query)
+
+        let by_price_per_net_content = query.by_price_per_net_content
+          ? JSON.parse(query.by_price_per_net_content)
+          : undefined
+        let by_discount = query.by_discount ? JSON.parse(query.by_discount) : undefined
+
+        const res = await plpService(
+          filters,
+          by_price_per_net_content,
+          by_discount,
+          query.sort,
+          query.page,
+          ITEMS_PER_PAGE,
+        )
 
         const products = res.data.data
         const total = res.data.total
@@ -76,6 +92,42 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
    */
   const clearFilters = submit => {
     setFilters([], submit)
+    updateStore(store => ({
+      reloading: Boolean(submit),
+      pageData: {
+        ...store.pageData,
+        by_discount: undefined,
+        by_price_per_net_content: undefined,
+      },
+    }))
+  }
+
+  const setByPricePerNetContentFilter = (min, max, submit) => {
+    updateStore(store => ({
+      reloading: Boolean(submit),
+      pageData: {
+        ...store.pageData,
+        by_price_per_net_content: {
+          min,
+          max,
+        },
+        page: submit ? 1 : store.pageData.page,
+      },
+    }))
+  }
+
+  const setByDiscountFilter = (min, max, submit) => {
+    updateStore(store => ({
+      reloading: Boolean(submit),
+      pageData: {
+        ...store.pageData,
+        by_discount: {
+          min,
+          max,
+        },
+        page: submit ? 1 : store.pageData.page,
+      },
+    }))
   }
 
   /**
@@ -159,9 +211,21 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
    * Computes the query for the current state of the search controls
    */
   const getQueryForState = () => {
-    const { filters, page, sort } = store.pageData
+    const { filters, by_price_per_net_content, by_discount, page, sort } = store.pageData
     const { search } = window.location
     const query = qs.parse(search, { ignoreQueryPrefix: true })
+
+    if (by_price_per_net_content) {
+      query.by_price_per_net_content = JSON.stringify(by_price_per_net_content)
+    } else {
+      delete query.by_price_per_net_content
+    }
+
+    if (by_discount) {
+      query.by_discount = JSON.stringify(by_discount)
+    } else {
+      delete query.by_discount
+    }
 
     if (filters.length) {
       query.filters = JSON.stringify(filters)
@@ -220,6 +284,8 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
           setSort,
           setFilters,
           updateFilters,
+          setByPricePerNetContentFilter,
+          setByDiscountFilter,
         },
       }}
     >
