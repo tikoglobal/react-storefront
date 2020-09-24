@@ -7,7 +7,7 @@
   "engines": {
     "node": ">=8.10.0"
   },
-  "repository": "https://github.com/tikoglobal/react-storefront",
+  "repository": "git@github.com:tikoglobal/react-storefront.git",
   "directories": {
     "test": "test"
   },
