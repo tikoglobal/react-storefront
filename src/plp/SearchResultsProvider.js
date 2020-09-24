@@ -31,10 +31,6 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
         const query = getQueryForState()
         const url = getURLForState(query)
 
-        // Don't show page for user
-        replaceState(null, null, getURLForState(query))
-
-        const ITEMS_PER_PAGE = 50
         let filters = []
         if (query.filters) {
           filters = JSON.parse(query.filters)
@@ -53,8 +49,11 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
           by_discount,
           query.sort,
           query.page,
-          ITEMS_PER_PAGE,
         )
+
+        // Don't show page for user
+        delete query.page
+        replaceState(null, null, getURLForState(query))
 
         const products = res.data.data
         const total = res.data.total
@@ -102,30 +101,61 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
     }))
   }
 
-  const setByPricePerNetContentFilter = (min, max, submit) => {
+  const setByPricePerNetContentFilterMin = min => {
+    updateStore(store => ({
+      reloading: Boolean(false),
+      pageData: {
+        ...store.pageData,
+        by_price_per_net_content: {
+          ...store.pageData.by_price_per_net_content,
+          min,
+        },
+      },
+    }))
+  }
+
+  const setByPricePerNetContentFilterMax = max => {
+    updateStore(store => ({
+      reloading: Boolean(false),
+      pageData: {
+        ...store.pageData,
+        by_price_per_net_content: {
+          ...store.pageData.by_price_per_net_content,
+          max,
+        },
+      },
+    }))
+  }
+
+  const applyByPricePerNetContentFilter = submit => {
     updateStore(store => ({
       reloading: Boolean(submit),
       pageData: {
         ...store.pageData,
-        by_price_per_net_content: {
-          min,
-          max,
-        },
         page: submit ? 1 : store.pageData.page,
       },
     }))
   }
 
-  const setByDiscountFilter = (min, max, submit) => {
+  const setByDiscountFilter = (min, max) => {
     updateStore(store => ({
-      reloading: Boolean(submit),
+      reloading: Boolean(false),
       pageData: {
         ...store.pageData,
         by_discount: {
           min,
           max,
         },
-        page: submit ? 1 : store.pageData.page,
+      },
+    }))
+  }
+
+  const applyByDiscountFilter = () => {
+    updateStore(store => ({
+      reloading: Boolean(true),
+      pageData: {
+        ...store.pageData,
+        page: true ? 1 : store.pageData.page,
       },
     }))
   }
@@ -284,8 +314,11 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
           setSort,
           setFilters,
           updateFilters,
-          setByPricePerNetContentFilter,
+          applyByPricePerNetContentFilter,
+          setByPricePerNetContentFilterMin,
+          setByPricePerNetContentFilterMax,
           setByDiscountFilter,
+          applyByDiscountFilter,
         },
       }}
     >

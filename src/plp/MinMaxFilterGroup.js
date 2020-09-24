@@ -28,21 +28,15 @@ const styles = theme => ({
 
 const useStyles = makeStyles(styles, { name: 'RSFCheckboxFilterGroup' })
 
-/**
- * A UI for grouping filters using checkboxes.
- */
-export default function CheckboxFilterGroup(props) {
-  const { group, submitOnChange } = props
+export default function MinMaxFilterGroup(props) {
   const {
     pageData: { by_price_per_net_content },
-    actions: { setByPricePerNetContentFilter },
+    actions: {
+      setByPricePerNetContentFilterMin,
+      setByPricePerNetContentFilterMax,
+      applyByPricePerNetContentFilter,
+    },
   } = useContext(SearchResultsContext)
-
-  const initialMin = by_price_per_net_content ? by_price_per_net_content.min : undefined
-  const initialMax = by_price_per_net_content ? by_price_per_net_content.max : undefined
-
-  const [min, setMin] = useState(initialMin)
-  const [max, setMax] = useState(initialMax)
 
   const classes = useStyles(props.classes)
 
@@ -50,25 +44,24 @@ export default function CheckboxFilterGroup(props) {
     <FormGroup>
       <Box display="flex">
         <TextField
-          value={min}
+          value={by_price_per_net_content ? by_price_per_net_content.min : ''}
           variant="filled"
           label="$ Min"
-          onChange={event => setMin(event.target.value)}
+          onChange={event => setByPricePerNetContentFilterMin(event.target.value)}
           className={classes.field}
           margin="dense"
+          size="small"
         />
         <TextField
-          value={max}
+          value={by_price_per_net_content ? by_price_per_net_content.max : ''}
           variant="filled"
           label="$ Max"
-          onChange={event => setMax(event.target.value)}
+          onChange={event => setByPricePerNetContentFilterMax(event.target.value)}
           className={classes.field}
           margin="dense"
+          size="small"
         />
-        <IconButton
-          aria-label="Apply"
-          onClick={() => setByPricePerNetContentFilter(min, max, true)}
-        >
+        <IconButton aria-label="Apply" onClick={() => applyByPricePerNetContentFilter(true)}>
           <ArrowForwardIos />
         </IconButton>
       </Box>
@@ -76,7 +69,7 @@ export default function CheckboxFilterGroup(props) {
   )
 }
 //<button onClick={() => setByPricePerNetContentFilter(9, 31, true)}>Set Filter</button>
-CheckboxFilterGroup.propTypes = {
+MinMaxFilterGroup.propTypes = {
   /**
    * Override or extend the styles applied to the component. See [CSS API](#css) below for more details.
    */

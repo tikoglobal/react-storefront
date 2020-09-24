@@ -1,47 +1,28 @@
 import PropTypes from 'prop-types'
-import React, { useMemo, useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Slider } from '@material-ui/core'
 import SearchResultsContext from './SearchResultsContext'
 import debounce from 'lodash/debounce'
 
-const debouncedSetByDiscountFilter = debounce((callback, min, max) => {
-  callback(min, max, true)
+const debouncedSetByDiscountFilter = debounce(callback => {
+  callback()
 }, 700)
 
 /**
  * A UI for grouping filters using checkboxes.
  */
 export default function CheckboxFilterGroup(props) {
-  const { group, submitOnChange } = props
   const {
     pageData: { by_discount },
-    actions: { setByDiscountFilter },
+    actions: { setByDiscountFilter, applyByDiscountFilter },
   } = useContext(SearchResultsContext)
-
-  console.log('render range')
-  console.log(by_discount)
-
-  let value = [0, 100]
-  if (by_discount) {
-    value = [by_discount.min, by_discount.max]
-  }
-  const [range, setRange] = useState(value)
-
-  const updateRange = range => {
-    setRange(range)
-    debouncedSetByDiscountFilter(setByDiscountFilter, range[0], range[1])
-  }
-
-  if (value[0] !== range[0] || value[1] !== range[1]) {
-    setRange([value[0], value[1]])
-  }
 
   return (
     <Slider
-      value={range}
+      value={[by_discount ? by_discount.min : 0, by_discount ? by_discount.max : 100]}
       min={0}
       max={100}
-      step={10}
+      step={5}
       marks={[
         {
           value: 0,
@@ -52,7 +33,10 @@ export default function CheckboxFilterGroup(props) {
           label: '100%',
         },
       ]}
-      onChange={(_event, value) => updateRange(value)}
+      onChange={(_event, value) => {
+        setByDiscountFilter(value[0], value[1])
+        debouncedSetByDiscountFilter(applyByDiscountFilter)
+      }}
       valueLabelDisplay="auto"
       aria-labelledby="range-slider"
     />
