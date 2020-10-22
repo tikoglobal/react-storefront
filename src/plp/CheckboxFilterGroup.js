@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
-import React, { useMemo, useContext } from 'react'
-import { Checkbox, FormGroup, Typography, FormControlLabel } from '@material-ui/core'
+import React, { useMemo, useContext, useState } from 'react'
+import { Checkbox, FormGroup, Link, FormControlLabel } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import SearchResultsContext from './SearchResultsContext'
+import take from 'lodash/take'
 
 const styles = theme => ({
   /**
@@ -19,6 +20,10 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
   },
+
+  loadMoreLink: {
+    paddingLeft: '30px',
+  },
 })
 
 const useStyles = makeStyles(styles, { name: 'RSFCheckboxFilterGroup' })
@@ -27,6 +32,7 @@ const useStyles = makeStyles(styles, { name: 'RSFCheckboxFilterGroup' })
  * A UI for grouping filters using checkboxes.
  */
 export default function CheckboxFilterGroup(props) {
+  const [showMore, setShowMore] = useState(false)
   const { group, submitOnChange } = props
   const {
     pageData: { filters },
@@ -38,15 +44,12 @@ export default function CheckboxFilterGroup(props) {
   return useMemo(
     () => (
       <FormGroup>
-        {group.options.map((facet, i) => (
+        {take(group.options, 5).map((facet, i) => (
           <FormControlLabel
             key={i}
             label={
               <div className={classes.groupLabel}>
                 <span>{facet.name}</span>
-                <Typography variant="caption" className={classes.matches} component="span">
-                  ({facet.matches})
-                </Typography>
               </div>
             }
             control={
@@ -58,9 +61,48 @@ export default function CheckboxFilterGroup(props) {
             }
           />
         ))}
+        {group.options.length > 5 &&
+          showMore === true &&
+          group.options.slice(5).map((facet, i) => (
+            <FormControlLabel
+              key={i}
+              label={
+                <div className={classes.groupLabel}>
+                  <span>{facet.name}</span>
+                </div>
+              }
+              control={
+                <Checkbox
+                  checked={filters.indexOf(facet.code) !== -1}
+                  color="primary"
+                  onChange={() => toggleFilter(facet, submitOnChange)}
+                />
+              }
+            />
+          ))}
+        {group.options.length > 5 && showMore === false ? (
+          <Link
+            href="#"
+            onClick={() => setShowMore(true)}
+            className={classes.loadMoreLink}
+            variant="caption"
+          >
+            See all...
+          </Link>
+        ) : null}
+        {group.options.length > 5 && showMore === true ? (
+          <Link
+            href="#"
+            onClick={() => setShowMore(false)}
+            className={classes.loadMoreLink}
+            variant="caption"
+          >
+            See less...
+          </Link>
+        ) : null}
       </FormGroup>
     ),
-    [...Object.values(props), filters],
+    [...Object.values(props), filters, showMore],
   )
 }
 

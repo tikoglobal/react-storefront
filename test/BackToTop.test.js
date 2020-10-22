@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import BackToTop from 'react-storefront/BackToTop'
+import BackToTop from '@tikoglobal/react-storefront/BackToTop'
 import { ArrowBack as CustomIcon } from '@material-ui/icons'
 import { eventListenersMock } from './mocks/mockHelper'
 import { Fab } from '@material-ui/core'

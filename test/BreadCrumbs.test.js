@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Breadcrumbs from 'react-storefront/Breadcrumbs'
+import Breadcrumbs from '@tikoglobal/react-storefront/Breadcrumbs'
 import { Typography, Container } from '@material-ui/core'
 
 describe('Breadcrumbs', () => {

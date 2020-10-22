@@ -76,7 +76,7 @@ export default function ShowMore({
   const [loading, setLoading] = useState(false)
   const { actions, pageData } = useContext(SearchResultsContext)
 
-  if (pageData && pageData.page >= pageData.totalPages - 1) return null
+  if (pageData && pageData.page >= pageData.totalPages) return null
 
   async function fetchMore() {
     if (!loading) {

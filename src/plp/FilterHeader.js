@@ -54,21 +54,27 @@ export default function FilterHeader(props) {
   const classes = useStyles(props.classes)
   const {
     actions,
-    pageData: { filters },
+    pageData: { filters, by_discount, by_price_per_net_content },
   } = useContext(SearchResultsContext)
+
+  const noFilters = !filters || filters.length === 0
+  const noByDiscount = !by_discount
+  const noByPrice = !by_price_per_net_content
+
+  const hideClearFilters = hideClearLink || (noFilters && noByDiscount && noByPrice)
 
   return useMemo(
     () => (
       <Hbox justify="center" className={classes.header}>
         <div className={classes.title}>{title}</div>
-        {hideClearLink || !filters || filters.length === 0 ? null : (
+        {hideClearFilters ? null : (
           <button onClick={() => actions.clearFilters(submitOnChange)} className={classes.clear}>
             {clearLinkText}
           </button>
         )}
       </Hbox>
     ),
-    [filters, ...Object.values(props)],
+    [filters, by_discount, by_price_per_net_content, ...Object.values(props)],
   )
 }
 

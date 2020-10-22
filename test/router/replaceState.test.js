@@ -1,4 +1,4 @@
-import replaceState from 'react-storefront/router/replaceState'
+import replaceState from '@tikoglobal/react-storefront/router/replaceState'
 
 describe('replaceState', () => {
   it('should set the "as" prop in state', () => {

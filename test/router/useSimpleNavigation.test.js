@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import useSimpleNavigation from 'react-storefront/router/useSimpleNavigation'
+import useSimpleNavigation from '@tikoglobal/react-storefront/router/useSimpleNavigation'
 import Router, { navigate } from '../mocks/mockRouter'
 
 describe('useSimpleNavigation', () => {

@@ -2,7 +2,7 @@ import React, { ElementType } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { Popover } from '@material-ui/core'
-import useNavigationEvent from 'react-storefront/hooks/useNavigationEvent'
+import useNavigationEvent from '../hooks/useNavigationEvent'
 
 export const styles = theme => ({
   /**

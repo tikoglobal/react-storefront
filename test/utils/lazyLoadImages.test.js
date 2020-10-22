@@ -1,6 +1,6 @@
 import React, { useEffect, createRef } from 'react'
 import { mount } from 'enzyme'
-import lazyLoadImages from 'react-storefront/utils/lazyLoadImages'
+import lazyLoadImages from '@tikoglobal/react-storefront/utils/lazyLoadImages'
 
 describe('lazyLoadImages', () => {
   let wrapper, observer, ref, imageRef, selector

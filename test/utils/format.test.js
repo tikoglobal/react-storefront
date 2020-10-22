@@ -1,4 +1,4 @@
-import { price } from 'react-storefront/utils/format'
+import { price } from '@tikoglobal/react-storefront/utils/format'
 
 describe('price', () => {
   it('should render USD with two decimals by default', () => {

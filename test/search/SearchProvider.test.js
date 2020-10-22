@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { mount } from 'enzyme'
-import SearchProvider from 'react-storefront/search/SearchProvider'
-import SearchContext from 'react-storefront/search/SearchContext'
-import { StaleResponseError } from 'react-storefront/utils/fetchLatest'
+import SearchProvider from '@tikoglobal/react-storefront/search/SearchProvider'
+import SearchContext from '@tikoglobal/react-storefront/search/SearchContext'
+import { StaleResponseError } from '@tikoglobal/react-storefront/utils/fetchLatest'
 import { act } from 'react-dom/test-utils'
 
 describe('SearchProvider', () => {

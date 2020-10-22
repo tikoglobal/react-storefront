@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import MenuItemContent from 'react-storefront/menu/MenuItemContent'
-import MenuContext from 'react-storefront/menu/MenuContext'
+import MenuItemContent from '@tikoglobal/react-storefront/menu/MenuItemContent'
+import MenuContext from '@tikoglobal/react-storefront/menu/MenuContext'
 import { CircularProgress } from '@material-ui/core'
 
 describe('MenuItemContent', () => {

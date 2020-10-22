@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import withDefaultHandler from 'react-storefront/utils/withDefaultHandler'
+import withDefaultHandler from '@tikoglobal/react-storefront/utils/withDefaultHandler'
 
 describe('withDefaultHandler', () => {
   let wrapper

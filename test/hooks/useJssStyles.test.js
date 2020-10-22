@@ -1,5 +1,5 @@
 import React from 'react'
-import useJssStyles from 'react-storefront/hooks/useJssStyles'
+import useJssStyles from '@tikoglobal/react-storefront/hooks/useJssStyles'
 import { mount } from 'enzyme'
 
 describe('useJssStyles', () => {

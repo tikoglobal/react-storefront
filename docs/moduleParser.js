@@ -88,7 +88,7 @@ const parseInfo = (data, results, path, hasNamedExports) => {
     examples: examples,
     params: params,
     returns: returns,
-    import: !isClassMember ? `import ${importTemplate} from 'react-storefront/${path}'` : undefined,
+    import: !isClassMember ? `import ${importTemplate} from '@tikoglobal/react-storefront/${path}'` : undefined,
     members: type === 'class' ? [] : undefined,
   }
 

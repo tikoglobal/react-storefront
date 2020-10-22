@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import DrawerCloseButton from 'react-storefront/drawer/DrawerCloseButton'
+import DrawerCloseButton from '@tikoglobal/react-storefront/drawer/DrawerCloseButton'
 import { Fab, IconButton, Button } from '@material-ui/core'
 import { Add as TestIcon } from '@material-ui/icons'
 

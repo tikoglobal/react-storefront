@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { mount } from 'enzyme'
 import { act } from 'react-dom/test-utils'
-import AutoScrollToNewChildren from 'react-storefront/AutoScrollToNewChildren'
+import AutoScrollToNewChildren from '@tikoglobal/react-storefront/AutoScrollToNewChildren'
 
 describe('AutoScrollToNewChildren', () => {
   let wrapper, scrollIntoView

@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Offline from 'react-storefront/Offline'
+import Offline from '@tikoglobal/react-storefront/Offline'
 import { CloudOff as CloseOffIcon, ArrowBack as Test } from '@material-ui/icons'
 import { Typography } from '@material-ui/core'
 

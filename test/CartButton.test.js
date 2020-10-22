@@ -1,8 +1,8 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import CartButton from 'react-storefront/CartButton'
-import Link from 'react-storefront/link/Link'
-import ToolbarButton from 'react-storefront/ToolbarButton'
+import CartButton from '@tikoglobal/react-storefront/CartButton'
+import Link from '@tikoglobal/react-storefront/link/Link'
+import ToolbarButton from '@tikoglobal/react-storefront/ToolbarButton'
 import { AddShoppingCart as CustomIcon } from '@material-ui/icons'
 import { Badge } from '@material-ui/core'
 

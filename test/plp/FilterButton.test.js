@@ -1,10 +1,10 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchResultsContext from 'react-storefront/plp/SearchResultsContext'
-import FilterButton from 'react-storefront/plp/FilterButton'
-import Filter from 'react-storefront/plp/Filter'
-import ActionButton from 'react-storefront/ActionButton'
-import Drawer from 'react-storefront/drawer/Drawer'
+import SearchResultsContext from '@tikoglobal/react-storefront/plp/SearchResultsContext'
+import FilterButton from '@tikoglobal/react-storefront/plp/FilterButton'
+import Filter from '@tikoglobal/react-storefront/plp/Filter'
+import ActionButton from '@tikoglobal/react-storefront/ActionButton'
+import Drawer from '@tikoglobal/react-storefront/drawer/Drawer'
 import { act } from 'react-dom/test-utils'
 
 describe('FilterButton', () => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { mount } from 'enzyme'
-import ProductOptionSelector from 'react-storefront/option/ProductOptionSelector'
-import ProductOption from 'react-storefront/option/ProductOption'
+import ProductOptionSelector from '@tikoglobal/react-storefront/option/ProductOptionSelector'
+import ProductOption from '@tikoglobal/react-storefront/option/ProductOption'
 
 describe('ProductOptionSelector', () => {
   const colors = [

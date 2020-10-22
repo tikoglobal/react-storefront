@@ -1,4 +1,4 @@
-import { fetchLatest, StaleResponseError } from 'react-storefront/utils/fetchLatest'
+import { fetchLatest, StaleResponseError } from '@tikoglobal/react-storefront/utils/fetchLatest'
 
 describe('fetchLatest', () => {
   it('should throw an error when a response is received out of order', () => {

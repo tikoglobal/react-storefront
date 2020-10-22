@@ -1,6 +1,6 @@
 import React, { createRef } from 'react'
 import { mount } from 'enzyme'
-import LinkContext from 'react-storefront/link/LinkContext'
+import LinkContext from '@tikoglobal/react-storefront/link/LinkContext'
 
 describe('Link', () => {
   let wrapper, prefetch, Link
@@ -9,8 +9,8 @@ describe('Link', () => {
     prefetch = jest.fn()
 
     jest.isolateModules(() => {
-      jest.doMock('react-storefront/serviceWorker', () => ({ prefetch }))
-      Link = require('react-storefront/link/Link').default
+      jest.doMock('@tikoglobal/react-storefront/serviceWorker', () => ({ prefetch }))
+      Link = require('@tikoglobal/react-storefront/link/Link').default
     })
   })
 

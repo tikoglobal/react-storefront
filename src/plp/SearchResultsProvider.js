@@ -3,7 +3,6 @@ import SearchResultsContext from './SearchResultsContext'
 import PropTypes from 'prop-types'
 import qs from 'qs'
 import replaceState from '../router/replaceState'
-import getAPIURL from '../api/getAPIURL'
 
 /**
  * Provides context to filter, sorting, and pagination components.
@@ -24,20 +23,40 @@ import getAPIURL from '../api/getAPIURL'
  *  }
  * ```
  */
-export default function SearchResultsProvider({ store, updateStore, children }) {
+export default function SearchResultsProvider({ store, updateStore, plpService, children }) {
   useEffect(() => {
     if (store.reloading) {
       async function refresh() {
+        console.log('refresh here')
         const query = getQueryForState()
         const url = getURLForState(query)
+
+        let filters = []
+        if (query.filters) {
+          filters = JSON.parse(query.filters)
+        }
+
+        console.log(query)
+
+        let by_price_per_net_content = query.by_price_per_net_content
+          ? JSON.parse(query.by_price_per_net_content)
+          : undefined
+        let by_discount = query.by_discount ? JSON.parse(query.by_discount) : undefined
+
+        const res = await plpService(
+          filters,
+          by_price_per_net_content,
+          by_discount,
+          query.sort,
+          query.page,
+        )
 
         // Don't show page for user
         delete query.page
         replaceState(null, null, getURLForState(query))
 
-        const {
-          pageData: { products, total },
-        } = await fetch(getAPIURL(url)).then(res => res.json())
+        const products = res.data.data
+        const total = res.data.total
 
         updateStore(store => ({
           reloading: false,
@@ -45,7 +64,7 @@ export default function SearchResultsProvider({ store, updateStore, children }) 
             ...store.pageData,
             total,
             products:
-              store.pageData.page === 0 ? products : store.pageData.products.concat(products),
+              store.pageData.page === 1 ? products : store.pageData.products.concat(products),
           },
         }))
       }
@@ -72,6 +91,73 @@ export default function SearchResultsProvider({ store, updateStore, children }) 
    */
   const clearFilters = submit => {
     setFilters([], submit)
+    updateStore(store => ({
+      reloading: Boolean(submit),
+      pageData: {
+        ...store.pageData,
+        by_discount: undefined,
+        by_price_per_net_content: undefined,
+      },
+    }))
+  }
+
+  const setByPricePerNetContentFilterMin = min => {
+    updateStore(store => ({
+      reloading: Boolean(false),
+      pageData: {
+        ...store.pageData,
+        by_price_per_net_content: {
+          ...store.pageData.by_price_per_net_content,
+          min,
+        },
+      },
+    }))
+  }
+
+  const setByPricePerNetContentFilterMax = max => {
+    updateStore(store => ({
+      reloading: Boolean(false),
+      pageData: {
+        ...store.pageData,
+        by_price_per_net_content: {
+          ...store.pageData.by_price_per_net_content,
+          max,
+        },
+      },
+    }))
+  }
+
+  const applyByPricePerNetContentFilter = submit => {
+    updateStore(store => ({
+      reloading: Boolean(submit),
+      pageData: {
+        ...store.pageData,
+        page: submit ? 1 : store.pageData.page,
+      },
+    }))
+  }
+
+  const setByDiscountFilter = (min, max) => {
+    updateStore(store => ({
+      reloading: Boolean(false),
+      pageData: {
+        ...store.pageData,
+        by_discount: {
+          min,
+          max,
+        },
+      },
+    }))
+  }
+
+  const applyByDiscountFilter = () => {
+    updateStore(store => ({
+      reloading: Boolean(true),
+      pageData: {
+        ...store.pageData,
+        page: true ? 1 : store.pageData.page,
+      },
+    }))
   }
 
   /**
@@ -95,6 +181,28 @@ export default function SearchResultsProvider({ store, updateStore, children }) 
   }
 
   /**
+   * Switches the state of a filter
+   * @param {Object} facet
+   * @param {Boolean} submit If true, fetches new results from the server
+   */
+  const updateFilters = (facets, submit) => {
+    const { filters } = store.pageData
+    const nextFilters = [...filters]
+
+    facets.forEach(facet => {
+      const { code } = facet
+      const index = nextFilters.indexOf(code)
+      if (index === -1) {
+        nextFilters.push(code)
+      } else {
+        nextFilters[index] = code
+      }
+    })
+
+    setFilters(nextFilters, submit)
+  }
+
+  /**
    * Updates the set of selected filters
    * @param {Object[]} filters
    * @param {Boolean} submit If true, fetches new results from the server
@@ -110,7 +218,7 @@ export default function SearchResultsProvider({ store, updateStore, children }) 
         ...store.pageData,
         filters,
         filtersChanged: submit ? false : filtersChanged,
-        page: submit ? 0 : store.pageData.page,
+        page: submit ? 1 : store.pageData.page,
       },
     }))
   }
@@ -124,7 +232,7 @@ export default function SearchResultsProvider({ store, updateStore, children }) 
       pageData: {
         ...store.pageData,
         filtersChanged: false,
-        page: 0,
+        page: 1,
       },
     }))
   }
@@ -133,9 +241,21 @@ export default function SearchResultsProvider({ store, updateStore, children }) 
    * Computes the query for the current state of the search controls
    */
   const getQueryForState = () => {
-    const { filters, page, sort } = store.pageData
+    const { filters, by_price_per_net_content, by_discount, page, sort } = store.pageData
     const { search } = window.location
     const query = qs.parse(search, { ignoreQueryPrefix: true })
+
+    if (by_price_per_net_content) {
+      query.by_price_per_net_content = JSON.stringify(by_price_per_net_content)
+    } else {
+      delete query.by_price_per_net_content
+    }
+
+    if (by_discount) {
+      query.by_discount = JSON.stringify(by_discount)
+    } else {
+      delete query.by_discount
+    }
 
     if (filters.length) {
       query.filters = JSON.stringify(filters)
@@ -147,7 +267,7 @@ export default function SearchResultsProvider({ store, updateStore, children }) 
       delete query.more
     }
 
-    if (page > 0) {
+    if (page > 1) {
       query.page = page
     } else {
       delete query.page
@@ -177,7 +297,7 @@ export default function SearchResultsProvider({ store, updateStore, children }) 
       pageData: {
         ...store.pageData,
         sort: option.code,
-        page: 0,
+        page: 1,
       },
     }))
   }
@@ -193,6 +313,12 @@ export default function SearchResultsProvider({ store, updateStore, children }) 
           applyFilters,
           setSort,
           setFilters,
+          updateFilters,
+          applyByPricePerNetContentFilter,
+          setByPricePerNetContentFilterMin,
+          setByPricePerNetContentFilterMax,
+          setByDiscountFilter,
+          applyByDiscountFilter,
         },
       }}
     >

@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchHeader from 'react-storefront/search/SearchHeader'
+import SearchHeader from '@tikoglobal/react-storefront/search/SearchHeader'
 
 describe('SearchHeader', () => {
   let wrapper

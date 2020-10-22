@@ -1,4 +1,4 @@
-import storeInitialPropsInHistory from 'react-storefront/router/storeInitialPropsInHistory'
+import storeInitialPropsInHistory from '@tikoglobal/react-storefront/router/storeInitialPropsInHistory'
 
 describe('storeInitialPropsInHistory', () => {
   let originalReplaceState = history.replaceState

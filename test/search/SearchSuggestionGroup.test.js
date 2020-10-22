@@ -1,9 +1,9 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchSuggestionGroup from 'react-storefront/search/SearchSuggestionGroup'
-import SearchSuggestionItem from 'react-storefront/search/SearchSuggestionItem'
-import SearchProvider from 'react-storefront/search/SearchProvider'
-import PWAContext from 'react-storefront/PWAContext'
+import SearchSuggestionGroup from '@tikoglobal/react-storefront/search/SearchSuggestionGroup'
+import SearchSuggestionItem from '@tikoglobal/react-storefront/search/SearchSuggestionItem'
+import SearchProvider from '@tikoglobal/react-storefront/search/SearchProvider'
+import PWAContext from '@tikoglobal/react-storefront/PWAContext'
 
 describe('SearchSuggestionGroup', () => {
   let wrapper

@@ -2,7 +2,7 @@ import React from 'react'
 import { act } from 'react-dom/test-utils'
 import ReactVisibilitySensor from 'react-visibility-sensor'
 import { mount } from 'enzyme'
-import PWAContext from 'react-storefront/PWAContext'
+import PWAContext from '@tikoglobal/react-storefront/PWAContext'
 
 describe('Lazy', () => {
   let wrapper, Lazy
@@ -17,7 +17,7 @@ describe('Lazy', () => {
         useAmp: () => false,
       }))
 
-      Lazy = require('react-storefront/Lazy').default
+      Lazy = require('@tikoglobal/react-storefront/Lazy').default
     })
   })
 

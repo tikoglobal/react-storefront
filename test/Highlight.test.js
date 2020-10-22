@@ -9,7 +9,7 @@ describe('Highlight', () => {
       jest.mock('next/amp', () => ({
         useAmp: () => mockAmp,
       }))
-      Highlight = require('react-storefront/Highlight').default
+      Highlight = require('@tikoglobal/react-storefront/Highlight').default
     })
   })
 

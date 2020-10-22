@@ -12,7 +12,7 @@ module.exports = {
     '!**/index.js',
   ],
   moduleNameMapper: {
-    'react-storefront/(.*)': '<rootDir>/src/$1',
+    '@tikoglobal/react-storefront/(.*)': '<rootDir>/src/$1',
   },
   transformIgnorePatterns: [
     'node_modules/(?!(workbox-expiration|workbox-core|workbox-routing|workbox-strategies|workbox-precaching)/)',

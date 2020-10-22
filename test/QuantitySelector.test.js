@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { mount } from 'enzyme'
-import QuantitySelector from 'react-storefront/QuantitySelector'
+import QuantitySelector from '@tikoglobal/react-storefront/QuantitySelector'
 import { IconButton } from '@material-ui/core'
 
 describe('QuantitySelector', () => {

@@ -1,6 +1,6 @@
 import React from 'react'
-import useCartTotal from 'react-storefront/hooks/useCartTotal'
-import SessionContext from 'react-storefront/session/SessionContext'
+import useCartTotal from '@tikoglobal/react-storefront/hooks/useCartTotal'
+import SessionContext from '@tikoglobal/react-storefront/session/SessionContext'
 import { mount } from 'enzyme'
 
 describe('useCartTotal', () => {

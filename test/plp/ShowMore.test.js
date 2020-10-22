@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchResultsContext from 'react-storefront/plp/SearchResultsContext'
-import ShowMore from 'react-storefront/plp/ShowMore'
+import SearchResultsContext from '@tikoglobal/react-storefront/plp/SearchResultsContext'
+import ShowMore from '@tikoglobal/react-storefront/plp/ShowMore'
 import { act } from 'react-dom/test-utils'
 import VisibilitySensor from 'react-visibility-sensor'
 
