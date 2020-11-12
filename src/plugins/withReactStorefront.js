@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const ClearRequireCachePlugin = require('webpack-clear-require-cache-plugin')
+//const ClearRequireCachePlugin = require('webpack-clear-require-cache-plugin')
 const withServiceWorker = require('./withServiceWorker')
 
 /**
@@ -63,18 +63,22 @@ module.exports = ({
         config.externals.push('probe-image-size')
       }
 
-      if (process.env.NODE_ENV === 'development') {
-        // This makes it easier to develop apps against a local clone of react-storefront linked with yalc. Here
-        // we ensure that the server build recompiles when any linked dependency changes.
-        config.plugins.push(
-          new ClearRequireCachePlugin([
-            /\.next\/server\/ssr-module-cache.js/,
-            /react-storefront-analytics/,
-            /react-storefront-amp/,
-            /react-storefront\//,
-          ]),
-        )
-      }
+      /*
+        I comment this because webpack-clear-require-cache-plugin was deleted from npm.
+        So this is breaking installing packages
+      */
+      // if (process.env.NODE_ENV === 'development') {
+      //   // This makes it easier to develop apps against a local clone of react-storefront linked with yalc. Here
+      //   // we ensure that the server build recompiles when any linked dependency changes.
+      //   config.plugins.push(
+      //     new ClearRequireCachePlugin([
+      //       /\.next\/server\/ssr-module-cache.js/,
+      //       /react-storefront-analytics/,
+      //       /react-storefront-amp/,
+      //       /react-storefront\//,
+      //     ]),
+      //   )
+      // }
 
       config.module.rules.push({
         test: /\.svg$/,
