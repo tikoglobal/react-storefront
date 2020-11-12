@@ -1,6 +1,6 @@
 {
   "name": "@tikoglobal/react-storefront",
-  "version": "8.16.9",
+  "version": "8.16.10",
   "description": "Build and deploy e-commerce progressive web apps (PWAs) in record time.",
   "module": "./index.js",
   "license": "Apache-2.0",

@@ -29,6 +29,9 @@ export default function useSimpleNavigation() {
         const as = delegateTarget.getAttribute('href')
         const href = getRoute(as, routes.current)
 
+        //If target blank do nothing
+        if (delegateTarget.target === '_blank') return
+
         // catch if not next link
         if (href && !nextNavigation.current) {
           e.preventDefault()
