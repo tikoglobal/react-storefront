@@ -17,6 +17,7 @@ export default function useSearchResultsStore(lazyProps) {
       filtersChanged: false,
       by_price_per_net_content: undefined,
       by_discount: undefined,
+      q: undefined,
     }),
   }
 
