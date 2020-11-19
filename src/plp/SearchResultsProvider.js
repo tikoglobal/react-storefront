@@ -49,6 +49,7 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
           by_discount,
           query.sort,
           query.page,
+          query.q,
         )
 
         // Don't show page for user
@@ -241,7 +242,7 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
    * Computes the query for the current state of the search controls
    */
   const getQueryForState = () => {
-    const { filters, by_price_per_net_content, by_discount, page, sort } = store.pageData
+    const { filters, by_price_per_net_content, by_discount, page, sort, q } = store.pageData
     const { search } = window.location
     const query = qs.parse(search, { ignoreQueryPrefix: true })
 
@@ -277,6 +278,12 @@ export default function SearchResultsProvider({ store, updateStore, plpService, 
       query.sort = sort
     } else {
       delete query.sort
+    }
+
+    if (q) {
+      query.q = q
+    } else {
+      delete query.q
     }
 
     return query
